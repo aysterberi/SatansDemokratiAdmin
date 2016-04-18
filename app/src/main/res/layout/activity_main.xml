@@ -20,14 +20,15 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="25sp"/>
 
-    <TextView
+    <EditText
         android:background="@drawable/back"
         android:id="@+id/antal"
         android:layout_below="@+id/rubrik"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_margin="2dp"
-        android:text="Antal: "
+        android:inputType="text"
+        android:hint="Skriv in antal"
         android:textColor="@color/colorPrimaryDark"/>
 
     <CheckBox
@@ -37,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <TextView
+    <EditText
         android:background="@drawable/back"
         android:padding="5dp"
         android:id="@+id/messagebox"
@@ -45,8 +46,9 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_margin="2dp"
+        android:inputType="text"
         android:textColor="@color/colorPrimaryDark"
-        android:text="Skriv något"/>
+        android:hint="Skriv in antal"/>
 
     <LinearLayout
         android:layout_below="@id/messagebox"
