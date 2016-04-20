@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.os.StrictMode;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -30,7 +31,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //final DBHandler dbHandler = new DBHandler();
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+        final DBHandler dbHandler = new DBHandler();
         Button Skicka = (Button) findViewById(R.id.button_skicka);
         final EditText textRutan = (EditText) findViewById(R.id.messagebox);
         final EditText Antalen = (EditText) findViewById(R.id.antal);
@@ -45,8 +50,14 @@ public class MainActivity extends AppCompatActivity {
                     String antal = Antalen.getText().toString();
                     System.out.println("meddelande: "+meddelande+" antal: "+antal);
 
+                  //  dbHandler.getRandomUser(antal);
+                    //String [antal] antalen = dbHandler.nånting;
+                    //For(l:antalen){
+                    //    DBHandler.postMessagetoDb(meddelande, l);
+                  //  }
+                    System.out.println("antal"+ antal);
+                   dbHandler.postMessageToDb(meddelande, antal);
 
-                   // dbHandler.postMessageToDb(titel, meddelande, antal);
                 }
 
             });

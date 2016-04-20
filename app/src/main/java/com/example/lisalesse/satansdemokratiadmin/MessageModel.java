@@ -1,10 +1,9 @@
 package com.example.lisalesse.satansdemokratiadmin;
+        import okhttp3.*;
+        import org.json.JSONException;
+        import org.json.JSONObject;
 
-import okhttp3.*;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
+        import java.io.IOException;
 /**
  * Created by dödsadde on 2016-04-14.
  * Separate class to handle REST VERBS
