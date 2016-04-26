@@ -3,6 +3,7 @@ package com.example.lisalesse.satansdemokratiadmin;
 
 import android.util.Log;
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 public class DBHandler {
 
@@ -17,24 +18,29 @@ public class DBHandler {
          */
     }
 
-    public void getRandomUser(String antal){
+    public String getRandomUser(String antal){
         String messageJson = "{'Antal':\"\" + Antal}";
+        System.out.println(antal+" antal i db");
         try{
-            JSONObject response = model.apiPost("Get_random_user", new JSONObject(messageJson));
-            Log.d("LoginActivity", String.valueOf(response));
-
+            System.out.println("hej");
+            //String antalUsr =String.valueOf( model.apiGet("get_random_userid/" + antal));
+            JSONArray antalUsr = model.apiGetrnd("get_random_userid/" + antal);
+            System.out.println("jsonObjektet"+String.valueOf(antalUsr));
+            Log.d("LoginActivity", String.valueOf(antalUsr));
+            return String.valueOf(antalUsr);
         }
         catch (Exception e){
             //
         }
+        return null;
     }
     /**
      * Creates a new entry in the DB
      */
-    public void postMessageToDb(String meddelande, String Antal ) {
+    public void postMessageToDb(String meddelande, String UserId ) {
         /** Adding data to JSONObjects */
         String messageJson = "{'meddelande':\"" + meddelande
-                + "\",'Antal':\"" + Antal
+                + "\",'Userid':\"" + UserId
                 + "\"}";
 
         /**

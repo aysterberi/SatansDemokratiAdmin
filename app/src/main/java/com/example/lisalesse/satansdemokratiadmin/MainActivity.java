@@ -22,6 +22,7 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
@@ -56,7 +57,31 @@ public class MainActivity extends AppCompatActivity {
                     //    DBHandler.postMessagetoDb(meddelande, l);
                   //  }
                     System.out.println("antal"+ antal);
-                   dbHandler.postMessageToDb(meddelande, antal);
+                    try {
+                        JSONArray Usrs = new JSONArray(dbHandler.getRandomUser(antal));
+                        for(int i=0;i<Usrs.length();i++){
+                            JSONObject juan = Usrs.getJSONObject(i);
+                            String ursid = juan.getString("id");
+                           // ursid = ursid.replaceAll("[{}]", " ");
+                            System.out.println(ursid);
+                          dbHandler.postMessageToDb(meddelande, ursid);
+
+                        }
+
+
+                    }
+                    catch (JSONException e){
+                        e.printStackTrace();
+                    }
+
+
+                    //try {
+                      //  JSONObject antalUsrs = new JSONObject(dbHandler.getRandomUser(antal));
+                    //}
+                    //catch(JSONException e) {
+                     //   e.printStackTrace();
+                   // }
+                 // dbHandler.postMessageToDb(meddelande, antal);
 
                 }
 

@@ -4,6 +4,7 @@ package com.example.lisalesse.satansdemokratiadmin;
         import org.json.JSONObject;
 
         import java.io.IOException;
+import org.json.JSONArray;
 /**
  * Created by dödsadde on 2016-04-14.
  * Separate class to handle REST VERBS
@@ -36,7 +37,13 @@ public class MessageModel {
         Response response = client.newCall(request).execute();
         return new JSONObject(response.body().string());
     }
-
+    JSONArray apiGetrnd(String url) throws IOException, JSONException {
+        Request request = new Request.Builder()
+                .url(baseUrl + url)
+                .build();
+        Response response = client.newCall(request).execute();
+        return new JSONArray(response.body().string());
+    }
     /**
      * JSON_POST
      */
