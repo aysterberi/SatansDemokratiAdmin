@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        //jajamän kommentarer
         Skicka.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     String antal = "";
