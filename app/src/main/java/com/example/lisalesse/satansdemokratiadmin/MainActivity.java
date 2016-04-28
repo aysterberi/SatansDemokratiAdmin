@@ -1,5 +1,6 @@
 package com.example.lisalesse.satansdemokratiadmin;
 
+import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.os.StrictMode;
 import android.content.DialogInterface;
@@ -28,11 +30,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
-
+    String antal, meddelande;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_main);
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -57,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         //jajamän kommentarer
         Skicka.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    String antal = "";
-                    String meddelande = textRutan.getText().toString();
+                     antal = "";
+                    meddelande = textRutan.getText().toString();
                     //Boolean checked = checkBoxen.isChecked();
                     if(checkBoxen.isChecked()){
                         antal = "3000";
@@ -109,11 +113,22 @@ public class MainActivity extends AppCompatActivity {
 
 
                             }
-                            textRutan.getText().clear();
-                            Antalen.getText().clear();
-                            checkBoxen.setChecked(false);
-                            antal = "";
-                            meddelande="";
+
+                            Snackbar.make(findViewById(R.id.parentbrain),"Meddelande skickat",Snackbar.LENGTH_SHORT).setCallback(new Snackbar.Callback() {
+                                @Override
+                                public void onDismissed(Snackbar snackbar, int event) {
+                                    super.onDismissed(snackbar, event);
+                                    textRutan.getText().clear();
+                                    Antalen.getText().clear();
+                                    checkBoxen.setChecked(false);
+                                    antal = "";
+                                    meddelande="";
+
+
+                                }
+                            }).show();
+
+
 
 
                         } catch (JSONException e) {
