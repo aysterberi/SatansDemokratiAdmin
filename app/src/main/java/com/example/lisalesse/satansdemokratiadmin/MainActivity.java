@@ -43,8 +43,17 @@ public class MainActivity extends AppCompatActivity {
         final EditText textRutan = (EditText) findViewById(R.id.messagebox);
         final EditText Antalen = (EditText) findViewById(R.id.antal);
         final CheckBox checkBoxen = (CheckBox) findViewById(R.id.checkalla);
-
+        Button rensa = (Button) findViewById(R.id.button_rensa);
         assert Skicka != null;
+        rensa.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                textRutan.getText().clear();
+                Antalen.getText().clear();
+                checkBoxen.setChecked(false);
+
+            }
+
+        });
         Skicka.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     String antal = "";
