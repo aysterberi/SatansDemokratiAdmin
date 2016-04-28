@@ -9,51 +9,58 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.lisalesse.satansdemokratiadmin.MainActivity"
     android:orientation="horizontal"
+    android:background="@drawable/background"
     android:layout_weight="1">
 
     <TextView
         android:id="@+id/rubrik"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="ADMIN"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorAccent"
         android:textSize="25sp"/>
 
     <EditText
-        android:background="@drawable/back"
+        android:background="@color/colorAccent"
         android:id="@+id/antal"
         android:layout_below="@+id/rubrik"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_margin="2dp"
-        android:inputType="text"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:inputType="number"
         android:hint="Skriv in antal"
         android:textColor="@color/colorPrimaryDark"/>
 
     <CheckBox
         android:id="@+id/checkalla"
-        android:text="alla"
+        android:layout_marginLeft="10dp"
+        android:text="Alla"
+        android:buttonTint="@color/colorAccent"
+        android:textColor="@color/colorAccent"
         android:layout_below="@+id/antal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:background="@drawable/back"
+        android:background="@color/colorAccent"
         android:padding="5dp"
         android:id="@+id/messagebox"
         android:layout_below="@+id/checkalla"
+        android:layout_above="@+id/divider"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_margin="2dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:inputType="text"
         android:textColor="@color/colorPrimaryDark"
         android:hint="Skriv in antal"/>
 
     <LinearLayout
-        android:layout_below="@id/messagebox"
+        android:id="@+id/divider"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:weightSum="2">
 
         <Button
@@ -63,8 +70,8 @@
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
             android:text="Skicka"
-            android:layout_weight="1"
-            />
+            android:layout_weight="1" />
+
         <Button
             android:id="@+id/button_rensa"
             android:layout_below="@+id/messagebox"
@@ -74,9 +81,6 @@
             android:text="Rensa"
             android:layout_weight="1"/>
 
-
     </LinearLayout>
-
-
 
 </RelativeLayout>
