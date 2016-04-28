@@ -111,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
                             textRutan.getText().clear();
                             Antalen.getText().clear();
                             checkBoxen.setChecked(false);
+                            antal = "";
+                            meddelande="";
 
 
                         } catch (JSONException e) {
