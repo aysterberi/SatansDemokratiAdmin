@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.os.StrictMode;
+import android.content.DialogInterface;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -45,43 +47,64 @@ public class MainActivity extends AppCompatActivity {
         assert Skicka != null;
         Skicka.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-
+                    String antal = "";
                     String meddelande = textRutan.getText().toString();
                     //Boolean checked = checkBoxen.isChecked();
-                    String antal = Antalen.getText().toString();
+                    if(checkBoxen.isChecked()){
+                        antal = "3000";
+                    }
+                    else {
+                        antal = Antalen.getText().toString();
+                    }
+                    if(antal.isEmpty() && !checkBoxen.isChecked()){
+                        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                        alertDialog.setTitle("Du måste ange antal användare");
+                        alertDialog.setMessage("Ange antal användare eller klicka i alla boxen");
+                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                        return;
+
+                                    }
+                                });
+                        alertDialog.show();
+
+                    }
+                    if(meddelande.isEmpty()){
+                        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                        alertDialog.setTitle("Du måste skriva in ett meddelande");
+                        alertDialog.setMessage("Skriv in ett meddelande i boxen");
+                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                        return;
+
+                                    }
+                                });
+                        alertDialog.show();
+
+                    }
                     System.out.println("meddelande: "+meddelande+" antal: "+antal);
-
-                  //  dbHandler.getRandomUser(antal);
-                    //String [antal] antalen = dbHandler.nånting;
-                    //For(l:antalen){
-                    //    DBHandler.postMessagetoDb(meddelande, l);
-                  //  }
                     System.out.println("antal"+ antal);
-                    try {
-                        JSONArray Usrs = new JSONArray(dbHandler.getRandomUser(antal));
-                        for(int i=0;i<Usrs.length();i++){
-                            JSONObject juan = Usrs.getJSONObject(i);
-                            String ursid = juan.getString("id");
-                           // ursid = ursid.replaceAll("[{}]", " ");
-                            System.out.println(ursid);
-                          dbHandler.postMessageToDb(meddelande, ursid);
+                    if(!meddelande.isEmpty()&&!antal.isEmpty()) {
+                        try {
+                            JSONArray Usrs = new JSONArray(dbHandler.getRandomUser(antal));
+                            for (int i = 0; i < Usrs.length(); i++) {
+                                JSONObject juan = Usrs.getJSONObject(i);
+                                String ursid = juan.getString("id");
+                                System.out.println(ursid);
+                                dbHandler.postMessageToDb(meddelande, ursid);
 
+                            }
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
 
-
                     }
-                    catch (JSONException e){
-                        e.printStackTrace();
-                    }
-
-
-                    //try {
-                      //  JSONObject antalUsrs = new JSONObject(dbHandler.getRandomUser(antal));
-                    //}
-                    //catch(JSONException e) {
-                     //   e.printStackTrace();
-                   // }
-                 // dbHandler.postMessageToDb(meddelande, antal);
 
                 }
 
