@@ -106,7 +106,11 @@ public class MainActivity extends AppCompatActivity {
                                 System.out.println(ursid);
                                 dbHandler.postMessageToDb(meddelande, ursid);
 
+
                             }
+                            textRutan.getText().clear();
+                            Antalen.getText().clear();
+                            checkBoxen.setChecked(false);
 
 
                         } catch (JSONException e) {
