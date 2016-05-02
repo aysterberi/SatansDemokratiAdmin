@@ -49,9 +49,7 @@ public class MainActivity extends AppCompatActivity {
         if (clear != null) {
             clear.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    textRutan.getText().clear();
-                    antalen.getText().clear();
-                    checkBoxen.setChecked(false);
+                    clearEverything();
                 }
             });
         }
@@ -115,13 +113,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDismissed(Snackbar snackbar, int event) {
                 super.onDismissed(snackbar, event);
-                textRutan.getText().clear();
-                antalen.getText().clear();
-                checkBoxen.setChecked(false);
-                antal = "";
-                dropdown.setSelection(0);
+                clearEverything();
             }
         }).show();
+    }
+
+    private void clearEverything() {
+        eventSelected = false;
+        meddelande = "";
+        antal = "";
+        textRutan.getText().clear();
+        antalen.getText().clear();
+        checkBoxen.setChecked(false);
+        dropdown.setSelection(0);
     }
 
     private void setUpDropdown (){
@@ -134,9 +138,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        eventSelected = false;
-                        meddelande = "";
-                        dateTime = "";
+                        clearEverything();
                         break;
                     case 1:
                         eventAndDate();
