@@ -10,11 +10,12 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.lisalesse.satansdemokratiadmin.MainActivity"
     android:orientation="horizontal"
-    android:background="@drawable/background"
-    android:layout_weight="1">
+    android:background="@drawable/background">
+
 
     <TextView
         android:id="@+id/rubrik"
+        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -22,10 +23,27 @@
         android:textColor="@color/colorAccent"
         android:textSize="25sp"/>
 
+    <LinearLayout
+        android:id="@+id/spinnerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rubrik">
+
+        <Spinner
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            android:overlapAnchor="false"/>
+    </LinearLayout>
+
     <EditText
+        android:layout_below="@+id/spinnerlayout"
         android:background="@color/colorAccent"
         android:id="@+id/antal"
-        android:layout_below="@+id/rubrik"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"

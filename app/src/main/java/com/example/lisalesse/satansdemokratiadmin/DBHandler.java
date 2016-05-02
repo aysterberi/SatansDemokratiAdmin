@@ -54,5 +54,22 @@ public class DBHandler {
             e.printStackTrace();
         }
     }
+    public void postEventToDb(String meddelande, String dateTime ) {
+        /** Adding data to JSONObjects */
+        String messageJson = "{'EventId':\"" + meddelande
+                + "\",'datum':\"" + dateTime
+                + "\"}";
+
+        /**
+         * Call the API(MessageModel) with the JSonUserData.
+         */
+        try {
+            JSONObject response = model.apiPost("create_event/", new JSONObject(messageJson));
+            Log.d("LoginActivity", String.valueOf(response));
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 }
