@@ -12,7 +12,6 @@
     android:orientation="horizontal"
     android:background="@drawable/background">
 
-
     <TextView
         android:id="@+id/rubrik"
         android:layout_alignParentTop="true"
@@ -30,14 +29,16 @@
         android:layout_below="@+id/rubrik">
 
         <Spinner
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:id="@+id/spinner1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown"
-            android:overlapAnchor="false"/>
+            android:overlapAnchor="false"
+            />
+
     </LinearLayout>
 
     <EditText
@@ -52,6 +53,7 @@
         android:textColor="@color/colorPrimaryDark"/>
 
     <CheckBox
+        android:layout_centerInParent="true"
         android:id="@+id/checkalla"
         android:layout_marginLeft="10dp"
         android:text="Alla"
@@ -85,16 +87,18 @@
         <Button
             android:id="@+id/button_skicka"
             android:layout_below="@+id/messagebox"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:background="@color/colorAccent"
             android:text="Skicka"
             android:layout_weight="1" />
 
         <Button
             android:id="@+id/button_rensa"
+            android:layout_marginLeft="5dp"
             android:layout_below="@+id/messagebox"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
             android:text="Rensa"
