@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         skicka.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (eventSelected) {
-                    dbHandler.postEventToDb(meddelande, dateTime);
+                    dbHandler.postEventToDb(meddelande);
                     getSnackBar();
 
                 } else {
@@ -175,13 +175,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void eventAndDate() {
         eventSelected = true;
-        dateTime = getDateTime();
     }
 
-    private String getDateTime () {
-        Date date = new Date(System.currentTimeMillis());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String currenTime = dateFormat.format(date);
-        return currenTime;
-    }
 }

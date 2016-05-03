@@ -54,10 +54,9 @@ public class DBHandler {
             e.printStackTrace();
         }
     }
-    public void postEventToDb(String meddelande, String dateTime ) {
+    public void postEventToDb(String meddelande) {
         /** Adding data to JSONObjects */
         String messageJson = "{'EventId':\"" + meddelande
-                + "\",'datum':\"" + dateTime
                 + "\"}";
 
         /**
