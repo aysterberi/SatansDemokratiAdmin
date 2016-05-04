@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpDropdown (){
         dropdown = (Spinner)findViewById(R.id.spinner1);
-        String[] items = new String[]{"Välj Förbestämda Events", "Omröstning: Val", "Toby", "Lisa", "Robin", "Judas"};
+        String[] items = new String[]{"Välj Förbestämda Events", "Omröstning: Val", "Omröstning: Döda", "Fråga: Fråga Woland", "Fråga: Spå framtid", "Starta Argumentation"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
